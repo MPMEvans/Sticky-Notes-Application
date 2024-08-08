@@ -1,0 +1,31 @@
+<!-- posts/templates/posts/post_list.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bulletin Board - {{ page_title }}{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Task Board</h2>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <div class="clickable-container">
+                    <a href="{% url 'post_detail' pk=post.pk %}"></a>
+                    <h3>{{ post.title }}</h5>
+                    <p>{{ post.content }}</p>
+                    <p>Posted by: {{ post.name }}</p>
+                </div>
+                <br>
+                <div class="button-container">
+                    <a href="{% url 'post_update' pk=post.pk %}">Edit Task</a>
+                    <a href="{% url 'post_delete' pk=post.pk %}">Delete Task</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- <button><a href="{% url 'post_create' %}">Create new task</a></button> -->
+    <button onclick = window.location.href="{% url 'post_create' %}">Create new task</button>
+</section>
+{% endblock %}

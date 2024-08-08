@@ -1,0 +1,18 @@
+<!-- posts/templates/posts/post_detail.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bulletin Board - {{ post.title }}{% endblock %}
+
+{% block content %}
+<section>
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+    <p>Created at: {{ post.created_at }}</p>
+    <a href="{% url 'post_update' pk=post.pk %}">Edit this task</a>
+    <a href="{% url 'post_delete' pk=post.pk %}">Delete Task</a>
+    <br>
+    <br>
+    <a href="{% url 'post_list' %}">Back to Task List</a>
+</section>
+{% endblock %}
